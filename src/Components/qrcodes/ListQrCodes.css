@@ -1,0 +1,22 @@
+/* styles.css */
+.custom-link {
+    text-decoration: none;
+    color: black;    /* Styles de survol */
+    transition: color 0.3s; /* Transition pour un changement en douceur */
+}
+
+.custom-link:hover {
+    color: #0056b3;    text-decoration: none;
+}
+.list {
+    display: flex;
+}
+
+.qrcode-list {
+    margin-top: 1%;
+    margin-left: 16%;
+    padding: 1px 16px;
+    height: 1000px;
+    flex: 1;
+    padding: 20px;
+}

@@ -4,9 +4,12 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './login.css';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/authContext";
 
 const LoginForm = () => {
-
+  const { login } = useAuth();
+  const navigate = useNavigate();   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
@@ -21,8 +24,15 @@ const LoginForm = () => {
       });
 
       const { user, token } = response.data;
+      localStorage.setItem('token', token);
+      
+      
+      login(user,token);
       console.log('User connected successfully:', user);
       console.log('Token d\'authentification:', token);
+
+      navigate('/myqrcodes');
+      
 
 
     } catch (error) {
