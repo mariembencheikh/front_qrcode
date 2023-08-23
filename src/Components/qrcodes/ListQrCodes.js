@@ -8,13 +8,16 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 import { Link } from "react-router-dom";
 import './ListQrCodes.css'
+import { useAuth } from "../contexts/authContext";
 const ListQrCodes = () => {
+    const { user } = useAuth();
     return (
         <div className="list">
             <Sidebar />
             <div className="qrcode-list">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
+                    {user.role === "Customer" && (
                        <Link to="/MenuQrCode" className="custom-link" >
                         <div class="card border-primary" >
                                     <div class="card-body">
@@ -23,6 +26,17 @@ const ListQrCodes = () => {
                                     </div>
                             </div>
                         </Link>
+                    )}
+                        {user.role === "Admin" && (
+                            <Link to="/ListMenuQrCode" className="custom-link" >
+                            <div class="card border-primary" >
+                                        <div class="card-body">
+                                            <h5 class="card-title"><MenuBookIcon /> Menu book </h5>
+                                            <p class="card-text">Link to your menu book</p>
+                                        </div>
+                                </div>
+                            </Link>
+                        )}
                     </div>
                     <div class="col">
                     <Link to="/FacebookQrcode" className="custom-link" >

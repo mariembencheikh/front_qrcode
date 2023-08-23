@@ -30,8 +30,14 @@ const LoginForm = () => {
       login(user,token);
       console.log('User connected successfully:', user);
       console.log('Token d\'authentification:', token);
+      if(user.role==='Customer'){
+        navigate('/myqrcodes');
 
-      navigate('/myqrcodes');
+      }
+      else{
+        navigate('/listQrcodes');
+
+      }
       
 
 
