@@ -15,7 +15,7 @@ const ListQrCodes = () => {
             <div className="qrcode-list">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-                       <Link to="/generateQrcode" className="custom-link" >
+                       <Link to="/MenuQrCode" className="custom-link" >
                         <div class="card border-primary" >
                                     <div class="card-body">
                                         <h5 class="card-title"><MenuBookIcon /> Menu book </h5>
@@ -25,7 +25,7 @@ const ListQrCodes = () => {
                         </Link>
                     </div>
                     <div class="col">
-                    <Link to="/generateQrcode" className="custom-link" >
+                    <Link to="/FacebookQrcode" className="custom-link" >
                         <div class="card border-primary "  >
                             <div class="card-body" >
                                 <h5 class="card-title"><FacebookIcon /> Facebook account</h5>
@@ -35,7 +35,7 @@ const ListQrCodes = () => {
                         </Link>
                     </div>
                     <div class="col">
-                    <Link to="/generateQrcode" className="custom-link" >
+                    <Link to="/YoutubeQrcode" className="custom-link" >
                         <div class="card border-primary"  >
                             <div class="card-body">
                                 <h5 class="card-title"><SubscriptionsIcon /> Youtube</h5>
@@ -45,7 +45,7 @@ const ListQrCodes = () => {
                         </Link>
                     </div>
                     <div class="col">
-                    <Link to="/generateQrcode" className="custom-link" >
+                    <Link to="/ContactQrcode" className="custom-link" >
                         <div class="card border-primary"  >
                             <div class="card-body">
                                 <h5 class="card-title"><ContactPageIcon />Contact</h5>

@@ -1,10 +1,11 @@
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 import './App.css';
 import { AuthProvider, useAuth } from './Components/contexts/authContext';
-import Homepage from './Components/homepage/homepage';
 import MyQrcodes from './Components/qrcodes/Myqrcodes/MyQrcodes';
 import ListQrCodes from './Components/qrcodes/ListQrCodes';
-import GenerateQrcode from './Components/qrcodes/generateQrCodes/generateQRCode';
+import MenuQrCode from './Components/qrcodes/generateQrCodes/MenuQrCode';
+import RegisterForm from './Components/register/register';
+import LoginForm from './Components/login/login';
 
 
 function App() {
@@ -15,11 +16,11 @@ function App() {
      <Router>
       <div className='App'>
         <Routes>
-          <Route path="/" element={<Homepage/>} />
-        
+          <Route path="/" element={<LoginForm/>} />
+          <Route path="/register" element={<RegisterForm/>}/>
           <Route path="/myqrcodes" element={<MyQrcodes/>}/>
           <Route path='/listQrcodes' element={<ListQrCodes/>}/>
-          <Route path='/generateQrcode' element={<GenerateQrcode/>}/>
+          <Route path='/MenuQrCode' element={<MenuQrCode/>}/>
         </Routes>
       </div>
     </Router>

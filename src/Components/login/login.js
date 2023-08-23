@@ -76,7 +76,7 @@ const LoginForm = () => {
                       placeholder="Username"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-
+                      required
                     />
 
                   </div>
@@ -88,7 +88,8 @@ const LoginForm = () => {
                       id="password"
                       placeholder="Password"
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)} />
+                      onChange={(e) => setPassword(e.target.value)}
+                      required />
                   </div>
 
                   <input type="submit" value="Log In" class="btn btn-block btn-primary" />
