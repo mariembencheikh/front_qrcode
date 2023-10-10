@@ -8,6 +8,8 @@ import RegisterForm from './Components/register/register';
 import LoginForm from './Components/login/login';
 import AllCustomers from './Components/adminPages/AllCustomers';
 import ListMenuQrCode from './Components/adminPages/ListMenuQrCode';
+import MyQrcodeUpdate from './Components/qrcodes/Myqrcodes/MyQrcodeUpdate';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -21,7 +23,9 @@ function App() {
           <Route path="/" element={<LoginForm/>} />
           <Route path="/register" element={<RegisterForm/>}/>
           <Route path="/myqrcodes" element={<MyQrcodes/>}/>
+          <Route path="/updateMyQrcode/:id" element={<MyQrcodeUpdate/>}/>
           <Route path='/listQrcodes' element={<ListQrCodes/>}/>
+          
           <Route path='/MenuQrCode' element={<MenuQrCode/>}/>
           <Route path='/ListMenuQrCode' element={<ListMenuQrCode/>}/>
           <Route path='/all-users' element={<AllCustomers/>}/>
