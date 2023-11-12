@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JavaScript
-
+import moment from 'moment';
 import axios from "axios";
 import Sidebar from "../../sidebar/sidebar";
 import './MyQrcodes.css';
 import { useAuth } from "../../contexts/authContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const MyQrcodes = () => {
   const { token } = useAuth();
-  const navigate = useNavigate();
 
   const [qrcodeDetails, setQRCodes] = useState([]);
   const getFileNameFromPath = (filePath) => {
@@ -31,7 +30,6 @@ const MyQrcodes = () => {
             },
           });
           setQRCodes(qrCodesResponse.data);
-
         } catch (error) {
           console.log(error);
         }
@@ -39,20 +37,28 @@ const MyQrcodes = () => {
 
       fetchQrCodes();
     }
-    console.log(token);
-  }
-    , []); 
-  const handleDelete = async (qrcodeId) => {
-    try {
-      const response = await axios.delete(`http://localhost:5002/api/qrcodes/qrcodes/${qrcodeId}`);
-      setQRCodes((prevQRCodes) => prevQRCodes.filter((qrcode) => qrcode._id !== qrcodeId));
-      console.log("qr code deleted");
-      window.location.reload();
-      //navigate('/myqrcodes');
 
-    } catch (error) {
-      console.error(error);
+    console.log(token);
+
+  }
+    , []
+  );
+
+
+  const handleDelete = async (qrcodeId) => {
+    const confirmation = window.confirm('Are you sure you want to delete this item?'); 
+    if (confirmation){
+      try {
+        const response = await axios.delete(`http://localhost:5002/api/qrcodes/qrcodes/${qrcodeId}`);
+        setQRCodes((prevQRCodes) => prevQRCodes.filter((qrcode) => qrcode._id !== qrcodeId));
+        console.log("qr code deleted");
+        window.location.reload();
+  
+      } catch (error) {
+        console.error(error);
+      }
     }
+    
   };
   
 
@@ -80,10 +86,12 @@ const MyQrcodes = () => {
               <tr key={qrcode._id}>
                 <td>{qrcode.type}</td>
                 <td>{qrcodeMenu.restaurant}</td>
-                <img src={qrcode.code} class="img-thumbnail" />
-                <td>{qrcode.logo}</td>
-                <td>{getFileNameFromPath(qrcodeMenu.file)}</td>
-                <td>{qrcode.createdAt}</td>
+                <td><img src={qrcode.code}   width="100" height="100"/></td>
+             
+                <td><img src={`http://localhost:5002/${qrcode.logo}`}    width="100" height="100"/> </td>
+                <td><a href={`http://localhost:5002/${qrcodeMenu.file}`} target="_blank">See the PDF</a></td>
+                
+                <td>{moment(qrcode.createdAt).format("DD/MM/YYYY HH:mm:ss")}</td>
                 <td >
                   <div class="d-grid gap-2 d-md-block">
                     <Link to={`/updateMyQrcode/${qrcode._id}`} className="btn btn-success">

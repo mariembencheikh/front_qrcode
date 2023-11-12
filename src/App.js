@@ -10,6 +10,8 @@ import AllCustomers from './Components/adminPages/AllCustomers';
 import ListMenuQrCode from './Components/adminPages/ListMenuQrCode';
 import MyQrcodeUpdate from './Components/qrcodes/Myqrcodes/MyQrcodeUpdate';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddCustomer from './Components/adminPages/AddCustomer';
+import MyQrCodeDetails from './Components/qrcodes/after scan/MyQrCodeDetails';
 
 
 function App() {
@@ -25,10 +27,11 @@ function App() {
           <Route path="/myqrcodes" element={<MyQrcodes/>}/>
           <Route path="/updateMyQrcode/:id" element={<MyQrcodeUpdate/>}/>
           <Route path='/listQrcodes' element={<ListQrCodes/>}/>
-          
           <Route path='/MenuQrCode' element={<MenuQrCode/>}/>
           <Route path='/ListMenuQrCode' element={<ListMenuQrCode/>}/>
           <Route path='/all-users' element={<AllCustomers/>}/>
+          <Route path='/addCustomer' element={<AddCustomer/>}/>
+          <Route path="/api/generateqrcodes/:type/:id" element={<MyQrCodeDetails/>} />
         </Routes>
       </div>
     </Router>

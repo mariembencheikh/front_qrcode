@@ -13,6 +13,9 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
+      <div class="col-md-6 center">
+            <img src="images/logo.png" alt="Image" class="img-fluid "  />
+          </div>
       <div className="user">
         <p>Welcome, {user.firstname}!</p>
       </div>

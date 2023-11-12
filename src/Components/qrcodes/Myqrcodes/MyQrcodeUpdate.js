@@ -15,12 +15,14 @@ import { useAuth } from '../../contexts/authContext';
     const config = {
         headers: {
           'Authorization': `Bearer ${token}`,
+          "Content-Type": "multipart/form-data"
+
         },
       };
     console.log('token in update ',token);
     const { id } = useParams();
     const [restaurant,setRestaurant] = useState('');
-    const [logo, setLogo] = useState('');
+    const [logo, setLogo] = useState(null);
     const [file,setFile] = useState(null);
 
     //const [currentInfo, setCurrentInfo] = useState({ restaurant: '', logo: '' , pdfFile:''});
@@ -98,10 +100,9 @@ import { useAuth } from '../../contexts/authContext';
                 <label  class="col-sm-2 col-form-label">Logo</label>
                 <div class="col-sm-10">
                     <input 
-                    type="text" 
+                    type="file" 
                     name="logo" 
-                    value={logo}
-                    onChange={(e) => setLogo(e.target.value)}  
+                    onChange={(e) => setLogo(e.target.files[0])}  
                     class="form-control" 
                     required />
                 </div>

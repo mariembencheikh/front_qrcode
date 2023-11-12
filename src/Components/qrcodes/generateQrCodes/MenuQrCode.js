@@ -10,7 +10,7 @@ const MenuQrCode = () => {
     const { token } = useAuth();
     const type = "menu";
     const [restaurant,setRestaurant] = useState('');
-    const [logo,setLogo] = useState('');
+    const [logo,setLogo] = useState(null);
     const [pdfFile,setFile] = useState(null);
    
     const navigate = useNavigate();   
@@ -68,10 +68,9 @@ const MenuQrCode = () => {
                 <label  class="col-sm-2 col-form-label">Logo</label>
                 <div class="col-sm-10">
                     <input 
-                    type="text" 
+                    type="file" 
                     name="logo" 
-                    value={logo} 
-                    onChange={(e) => setLogo(e.target.value)}   
+                    onChange={(e) => setLogo(e.target.files[0])}   
                     class="form-control" 
                     required />
                 </div>
